@@ -67,13 +67,16 @@ def scrape():
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
 
-    titles = soup.find_all('h3')
+    titles =[]
+
+    for h3_tag in soup.find_all('h3'):
+        titles.append(h3_tag.text)
+
 
     mars_hemis_imgs = soup.find_all('div', class_='description')
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
 
-    titles = soup.find_all('h3')
 
     mars_hemis_imgs = soup.find_all('div', class_='description')
 
@@ -89,7 +92,7 @@ def scrape():
         html = browser.html
         soup = BeautifulSoup(html, 'html.parser')
         for link in soup.find_all('div', class_='downloads'):
-            image_urls.append(link.find_all('a')[1].get('href'))
+            image_urls.append(link.find_all('a')[0].get('href'))
 
     hemisphere_image_urls = []
     for title, img_url in zip(titles, image_urls):

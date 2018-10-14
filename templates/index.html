@@ -27,27 +27,24 @@
     <div class="container">
        <div class='col-lg-4'>
            <h1>Featured Mars Image</h1>
-           <img src = '{{ scrape.full_url }}'>
+           <img src = '{{ mars_data.jpl_url }}' length = '350' width = '350'>
        </div>
        <div class='col-lg-4'>
-            <h2>Current Weather on Mars</h2>
-            <p>{{ scrape.mars_weather }}</p>
+            <h1>Current Weather on Mars</h1>
+            <p>{{ mars_data.weather }}</p>
            <br>
            <h1>Mars Facts</h1>
-           <table>
-               {{ scrape.html_table }}
-           </table>
+            {{ mars_data.table | safe}}
        </div>
     </div>
     <br>
     <div class ='container'>
         <h1>Mars Hemispheres</h1>
-        {% for hemisphere in scrape.hemis%}
-            <div class='col-lg-6'>
-                <img src= '{{ hemis.img_url }}'>
-                <h1>{{ hemis.title }}</h1>
-            </div>
-        {% end for %}
+        {% for hemisphere in mars_data.hemis %}
+                <img src= '{{ hemisphere.img_url }}'>
+                <h1>{{ hemisphere.title }}</h1>
+            
+        {% endfor %}
     </div>
 </body>
 
