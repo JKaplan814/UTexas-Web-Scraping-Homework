@@ -86,9 +86,9 @@ def scrape():
     for hemi_url in mars_hemis_list:
         browser.visit(hemi_url)
 
-    html = browser.html
-    soup = BeautifulSoup(html, 'html.parser')
-    for link in soup.find_all('div', class_='downloads'):
+        html = browser.html
+        soup = BeautifulSoup(html, 'html.parser')
+        for link in soup.find_all('div', class_='downloads'):
             image_urls.append(link.find_all('a')[1].get('href'))
 
     hemisphere_image_urls = []

@@ -23,6 +23,32 @@
         <p>{{ mars_data.news_title }}</p>
         <p>{{ mars_data.news_p }}</p>
     </div>
+    <br>
+    <div class="container">
+       <div class='col-lg-4'>
+           <h1>Featured Mars Image</h1>
+           <img src = '{{ scrape.full_url }}'>
+       </div>
+       <div class='col-lg-4'>
+            <h2>Current Weather on Mars</h2>
+            <p>{{ scrape.mars_weather }}</p>
+           <br>
+           <h1>Mars Facts</h1>
+           <table>
+               {{ scrape.html_table }}
+           </table>
+       </div>
+    </div>
+    <br>
+    <div class ='container'>
+        <h1>Mars Hemispheres</h1>
+        {% for hemisphere in hemis%}
+            <div class='col-lg-6'>
+                <img src= '{{ hemis.img_url }}'>
+                <h1>{{ hemis.title }}</h1>
+            </div>
+        {% end for %}
+    </div>
 </body>
 
 
